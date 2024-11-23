@@ -1,0 +1,233 @@
+{
+	"name": "ds_adls_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_nvers_adls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "source",
+				"fileSystem": "adf-bonze"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Symbol",
+				"type": "UTF8"
+			},
+			{
+				"name": "CurrentDate",
+				"type": "DATE"
+			},
+			{
+				"name": "AssetType",
+				"type": "UTF8"
+			},
+			{
+				"name": "Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Description",
+				"type": "UTF8"
+			},
+			{
+				"name": "CIK",
+				"type": "UTF8"
+			},
+			{
+				"name": "Exchange",
+				"type": "UTF8"
+			},
+			{
+				"name": "Currency",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country",
+				"type": "UTF8"
+			},
+			{
+				"name": "Sector",
+				"type": "UTF8"
+			},
+			{
+				"name": "Industry",
+				"type": "UTF8"
+			},
+			{
+				"name": "Address",
+				"type": "UTF8"
+			},
+			{
+				"name": "FiscalYearEnd",
+				"type": "UTF8"
+			},
+			{
+				"name": "LatestQuarter",
+				"type": "UTF8"
+			},
+			{
+				"name": "MarketCapitalization",
+				"type": "INT32"
+			},
+			{
+				"name": "EBITDA",
+				"type": "INT32"
+			},
+			{
+				"name": "PERatio",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "PEGRatio",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "BookValue",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "DividendPerShare",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "DividendYield",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EPS",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "RevenuePerShareTTM",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ProfitMargin",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "OperatingMarginTTM",
+				"type": "UTF8"
+			},
+			{
+				"name": "ReturnOnAssetsTTM",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ReturnOnEquityTTM",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "RevenueTTM",
+				"type": "INT32"
+			},
+			{
+				"name": "GrossProfitTTM",
+				"type": "INT32"
+			},
+			{
+				"name": "DilutedEPSTTM",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "QuarterlyEarningsGrowthYOY",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "QuarterlyRevenueGrowthYOY",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "AnalystTargetPrice",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "AnalystRatingStrongBuy",
+				"type": "INT32"
+			},
+			{
+				"name": "AnalystRatingBuy",
+				"type": "INT32"
+			},
+			{
+				"name": "AnalystRatingHold",
+				"type": "INT32"
+			},
+			{
+				"name": "AnalystRatingSell",
+				"type": "INT32"
+			},
+			{
+				"name": "AnalystRatingStrongSell",
+				"type": "INT32"
+			},
+			{
+				"name": "TrailingPE",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ForwardPE",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "PriceToSalesRatioTTM",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "PriceToBookRatio",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EVToRevenue",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EVToEBITDA",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Beta",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "52WeekHigh",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "52WeekLow",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "50DayMovingAverage",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "200DayMovingAverage",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "SharesOutstanding",
+				"type": "INT32"
+			},
+			{
+				"name": "DividendDate",
+				"type": "UTF8"
+			},
+			{
+				"name": "ExDividendDate",
+				"type": "UTF8"
+			},
+			{
+				"name": "OperatingMargin",
+				"type": "DOUBLE"
+			}
+		]
+	}
+}
