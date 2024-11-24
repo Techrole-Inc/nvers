@@ -1,0 +1,726 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "nvers"
+		},
+		"ls_nvers_adls_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_nvers_adls'"
+		},
+		"ls_nvers_adls_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nvsproject.dfs.core.windows.net/"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/ls_nvers_adls')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('ls_nvers_adls_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('ls_nvers_adls_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_adls_source')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_nvers_adls",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "source",
+						"fileSystem": "adf-bonze"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "Symbol",
+						"type": "UTF8"
+					},
+					{
+						"name": "CurrentDate",
+						"type": "DATE"
+					},
+					{
+						"name": "AssetType",
+						"type": "UTF8"
+					},
+					{
+						"name": "Name",
+						"type": "UTF8"
+					},
+					{
+						"name": "Description",
+						"type": "UTF8"
+					},
+					{
+						"name": "CIK",
+						"type": "UTF8"
+					},
+					{
+						"name": "Exchange",
+						"type": "UTF8"
+					},
+					{
+						"name": "Currency",
+						"type": "UTF8"
+					},
+					{
+						"name": "Country",
+						"type": "UTF8"
+					},
+					{
+						"name": "Sector",
+						"type": "UTF8"
+					},
+					{
+						"name": "Industry",
+						"type": "UTF8"
+					},
+					{
+						"name": "Address",
+						"type": "UTF8"
+					},
+					{
+						"name": "FiscalYearEnd",
+						"type": "UTF8"
+					},
+					{
+						"name": "LatestQuarter",
+						"type": "UTF8"
+					},
+					{
+						"name": "MarketCapitalization",
+						"type": "INT32"
+					},
+					{
+						"name": "EBITDA",
+						"type": "INT32"
+					},
+					{
+						"name": "PERatio",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "PEGRatio",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "BookValue",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "DividendPerShare",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "DividendYield",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EPS",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "RevenuePerShareTTM",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ProfitMargin",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "OperatingMarginTTM",
+						"type": "UTF8"
+					},
+					{
+						"name": "ReturnOnAssetsTTM",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ReturnOnEquityTTM",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "RevenueTTM",
+						"type": "INT32"
+					},
+					{
+						"name": "GrossProfitTTM",
+						"type": "INT32"
+					},
+					{
+						"name": "DilutedEPSTTM",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "QuarterlyEarningsGrowthYOY",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "QuarterlyRevenueGrowthYOY",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "AnalystTargetPrice",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "AnalystRatingStrongBuy",
+						"type": "INT32"
+					},
+					{
+						"name": "AnalystRatingBuy",
+						"type": "INT32"
+					},
+					{
+						"name": "AnalystRatingHold",
+						"type": "INT32"
+					},
+					{
+						"name": "AnalystRatingSell",
+						"type": "INT32"
+					},
+					{
+						"name": "AnalystRatingStrongSell",
+						"type": "INT32"
+					},
+					{
+						"name": "TrailingPE",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "ForwardPE",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "PriceToSalesRatioTTM",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "PriceToBookRatio",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EVToRevenue",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "EVToEBITDA",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "Beta",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "52WeekHigh",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "52WeekLow",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "50DayMovingAverage",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "200DayMovingAverage",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "SharesOutstanding",
+						"type": "INT32"
+					},
+					{
+						"name": "DividendDate",
+						"type": "UTF8"
+					},
+					{
+						"name": "ExDividendDate",
+						"type": "UTF8"
+					},
+					{
+						"name": "OperatingMargin",
+						"type": "DOUBLE"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_nvers_adls')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_nvers_target_csv')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_nvers_adls",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "target",
+						"fileSystem": "adf-bonze"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Symbol",
+						"type": "String"
+					},
+					{
+						"name": "CurrentDate",
+						"type": "String"
+					},
+					{
+						"name": "AssetType",
+						"type": "String"
+					},
+					{
+						"name": "Name",
+						"type": "String"
+					},
+					{
+						"name": "Description",
+						"type": "String"
+					},
+					{
+						"name": "CIK",
+						"type": "String"
+					},
+					{
+						"name": "Exchange",
+						"type": "String"
+					},
+					{
+						"name": "Currency",
+						"type": "String"
+					},
+					{
+						"name": "Country",
+						"type": "String"
+					},
+					{
+						"name": "Sector",
+						"type": "String"
+					},
+					{
+						"name": "Industry",
+						"type": "String"
+					},
+					{
+						"name": "Address",
+						"type": "String"
+					},
+					{
+						"name": "FiscalYearEnd",
+						"type": "String"
+					},
+					{
+						"name": "LatestQuarter",
+						"type": "String"
+					},
+					{
+						"name": "MarketCapitalization",
+						"type": "String"
+					},
+					{
+						"name": "EBITDA",
+						"type": "String"
+					},
+					{
+						"name": "PERatio",
+						"type": "String"
+					},
+					{
+						"name": "PEGRatio",
+						"type": "String"
+					},
+					{
+						"name": "BookValue",
+						"type": "String"
+					},
+					{
+						"name": "DividendPerShare",
+						"type": "String"
+					},
+					{
+						"name": "DividendYield",
+						"type": "String"
+					},
+					{
+						"name": "EPS",
+						"type": "String"
+					},
+					{
+						"name": "RevenuePerShareTTM",
+						"type": "String"
+					},
+					{
+						"name": "ProfitMargin",
+						"type": "String"
+					},
+					{
+						"name": "OperatingMarginTTM",
+						"type": "String"
+					},
+					{
+						"name": "ReturnOnAssetsTTM",
+						"type": "String"
+					},
+					{
+						"name": "ReturnOnEquityTTM",
+						"type": "String"
+					},
+					{
+						"name": "RevenueTTM",
+						"type": "String"
+					},
+					{
+						"name": "GrossProfitTTM",
+						"type": "String"
+					},
+					{
+						"name": "DilutedEPSTTM",
+						"type": "String"
+					},
+					{
+						"name": "QuarterlyEarningsGrowthYOY",
+						"type": "String"
+					},
+					{
+						"name": "QuarterlyRevenueGrowthYOY",
+						"type": "String"
+					},
+					{
+						"name": "AnalystTargetPrice",
+						"type": "String"
+					},
+					{
+						"name": "AnalystRatingStrongBuy",
+						"type": "String"
+					},
+					{
+						"name": "AnalystRatingBuy",
+						"type": "String"
+					},
+					{
+						"name": "AnalystRatingHold",
+						"type": "String"
+					},
+					{
+						"name": "AnalystRatingSell",
+						"type": "String"
+					},
+					{
+						"name": "AnalystRatingStrongSell",
+						"type": "String"
+					},
+					{
+						"name": "TrailingPE",
+						"type": "String"
+					},
+					{
+						"name": "ForwardPE",
+						"type": "String"
+					},
+					{
+						"name": "PriceToSalesRatioTTM",
+						"type": "String"
+					},
+					{
+						"name": "PriceToBookRatio",
+						"type": "String"
+					},
+					{
+						"name": "EVToRevenue",
+						"type": "String"
+					},
+					{
+						"name": "EVToEBITDA",
+						"type": "String"
+					},
+					{
+						"name": "Beta",
+						"type": "String"
+					},
+					{
+						"name": "52WeekHigh",
+						"type": "String"
+					},
+					{
+						"name": "52WeekLow",
+						"type": "String"
+					},
+					{
+						"name": "50DayMovingAverage",
+						"type": "String"
+					},
+					{
+						"name": "200DayMovingAverage",
+						"type": "String"
+					},
+					{
+						"name": "SharesOutstanding",
+						"type": "String"
+					},
+					{
+						"name": "DividendDate",
+						"type": "String"
+					},
+					{
+						"name": "ExDividendDate",
+						"type": "String"
+					},
+					{
+						"name": "OperatingMargin",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_nvers_adls')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "checkfile",
+						"type": "Lookup",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "ParquetSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
+									"wildcardFileName": "*.parquet",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "ParquetReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "ds_adls_source",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Get Metadata1",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "ds_adls_source",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobFSReadSettings",
+								"enablePartitionDiscovery": false
+							},
+							"formatSettings": {
+								"type": "ParquetReadSettings"
+							}
+						}
+					},
+					{
+						"name": "If Condition1",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@greater(length(activity('Get Metadata1').output.childItems), 0)\n",
+								"type": "Expression"
+							},
+							"ifTrueActivities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ParquetSource",
+											"storeSettings": {
+												"type": "AzureBlobFSReadSettings",
+												"recursive": true,
+												"wildcardFileName": "*.parquet",
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "ParquetReadSettings"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings",
+												"copyBehavior": "PreserveHierarchy"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "ds_adls_source",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "ds_nvers_target_csv",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "Delete1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "ds_adls_source",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "ls_nvers_adls",
+												"type": "LinkedServiceReference"
+											},
+											"path": "adf-loging"
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobFSReadSettings",
+											"recursive": true,
+											"wildcardFileName": "*.parquet",
+											"enablePartitionDiscovery": false
+										}
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_adls_source')]",
+				"[concat(variables('factoryId'), '/datasets/ds_nvers_target_csv')]",
+				"[concat(variables('factoryId'), '/linkedServices/ls_nvers_adls')]"
+			]
+		}
+	]
+}
