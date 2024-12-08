@@ -5,6 +5,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+variables:
+- group: dev
+
 steps:
 
 
@@ -27,7 +30,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
-    customCommand: 'run build validate $(Build.Repository.LocalPath)/<Root-folder-from-Git-configuration-settings-in-ADF> /subscriptions/$(DEVSubscriptionID)/resourceGroups/DEVResourceGroupName/providers/Microsoft.DataFactory/factories/nvers'
+    customCommand: 'run build validate $(Build.Repository.LocalPath) /subscriptions/$(DEVSubscriptionID)/resourceGroups/$(DEVResourceGroupName)/providers/Microsoft.DataFactory/factories/nvers'
   displayName: 'Validate'
 
 # Validate and then generate the ARM template into the destination folder, which is the same as selecting "Publish" from the UX.
@@ -37,7 +40,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
-    customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/$(DEVSubscriptionID)/resourceGroups/DEVResourceGroupName/providers/Microsoft.DataFactory/factories/nvers "ArmTemplate"'
+    customCommand: 'run build export $(Build.Repository.LocalPath) /subscriptions/$(DEVSubscriptionID)/resourceGroups/$(DEVResourceGroupName)/providers/Microsoft.DataFactory/factories/nvers "ArmTemplate"'
 #For using preview that allows you to only stop/ start triggers that are modified, please comment out the above line and uncomment the below line. Make sure the package.json contains the build-preview command. 
  #customCommand: 'run build-preview export $(Build.Repository.LocalPath) /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/GartnerMQ2021/providers/Microsoft.DataFactory/factories/Dev-GartnerMQ2021-DataFactory "ArmTemplate"'
   displayName: 'Validate and Generate ARM template'
