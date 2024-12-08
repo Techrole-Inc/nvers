@@ -22,7 +22,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '$(Build.Repository.LocalPath)'
+    workingDir: '$(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }}'
     verbose: true
   displayName: 'Install npm package'
 
