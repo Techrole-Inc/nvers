@@ -31,7 +31,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
-    customCommand: "run build validate $(Build.Repository.LocalPath)/reseource /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers"
+    customCommand: "run build validate $(Build.Repository.LocalPath)/resource /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers"
   displayName: 'Validate'
 
 
@@ -39,7 +39,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
-    customCommand: "run build export $(Build.Repository.LocalPath)/reseource /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers 'ArmTemplate'"
+    customCommand: "run build export $(Build.Repository.LocalPath)/resource /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers 'ArmTemplate'"
 
   displayName: 'Validate and Generate ARM template'
 
