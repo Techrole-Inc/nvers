@@ -20,7 +20,6 @@ stages:
     steps:
     - template: ci_cd/build.yml
       parameters:
-        #DataFactoryName: "${{ variables.BuildDataFactoryName }}"
         DEVResourceGroupName: "${{ variables.DEVResourceGroupName }}"
         DEVSubscriptionID: "${{ variables.DEVSubscriptionID }}"
         WorkingDirectory: "${{ variables.WorkingDirectory }}"

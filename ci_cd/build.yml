@@ -11,8 +11,8 @@ parameters:
   
 steps:
 
-- checkout: self
-  displayName: "Checkout Source Repo Code"
+#- checkout: self
+#  displayName: "Checkout Source Repo Code"
 
 - task: UseNode@1
   inputs:
@@ -22,7 +22,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
-    workingDir: '$(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }}'
+    workingDir: '$(Build.Repository.LocalPath)'
     verbose: true
   displayName: 'Install npm package'
 
@@ -30,7 +30,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'custom'
-    workingDir: '$(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }}' #replace with the package.json folder
+    workingDir: '$(Build.Repository.LocalPath) #replace with the package.json folder
     customCommand: 'run build validate $(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }} /subscriptions/${{ parameters.DEVSubscriptionID }}/resourceGroups/${{ parameters.DEVResourceGroupName }}/providers/Microsoft.DataFactory/factories/nvers'
   displayName: 'Validate'
 
