@@ -47,6 +47,6 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.Repository.LocalPath)/resource/ArmTemplate' #replace with the package.json folder
+    targetPath: '$(Build.Repository.LocalPath)/resource /ArmTemplate' #replace with the package.json folder
     artifact: 'ArmTemplates'
     publishLocation: 'pipeline'
