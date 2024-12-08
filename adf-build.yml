@@ -21,6 +21,6 @@ stages:
     - template: ci_cd/build.yml
       parameters:
         #DataFactoryName: "${{ variables.BuildDataFactoryName }}"
-        ResourceGroupName: "${{ variables.DEVResourceGroupName }}"
-        ADFArtifactName: "${{ variables.DEVSubscriptionID }}"
+        DEVResourceGroupName: "${{ variables.DEVResourceGroupName }}"
+        DEVSubscriptionID: "${{ variables.DEVSubscriptionID }}"
         WorkingDirectory: "${{ variables.WorkingDirectory }}"
