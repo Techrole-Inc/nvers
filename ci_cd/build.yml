@@ -11,8 +11,8 @@ parameters:
   
 steps:
 
-- checkout: self
-  displayName: "Checkout Source Repo Code"
+#- checkout: self
+#  displayName: "Checkout Source Repo Code"
 
 - task: UseNode@1
   inputs:
