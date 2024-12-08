@@ -5,7 +5,7 @@ trigger:
 
 
 pool:
-  vmImage: "ubuntu-latest"
+  vmImage: "windows-latest"
 
 stages:
 - stage: BuildDEVDataFactory
