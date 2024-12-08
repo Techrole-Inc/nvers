@@ -11,8 +11,8 @@ parameters:
   
 steps:
 
-#- checkout: self
-#  displayName: "Checkout Source Repo Code"
+- checkout: self
+  displayName: "Checkout Source Repo Code"
 
 - task: UseNode@1
   inputs:
@@ -41,7 +41,7 @@ steps:
     workingDir: '$(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }}' #replace with the package.json folder
     customCommand: 'run build export $(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }} /subscriptions/${{ parameters.DEVSubscriptionID }}/resourceGroups/${{ parameters.ResourceGroupName }}/providers/Microsoft.DataFactory/factories/nvers "ArmTemplate"'
 
-displayName: 'Validate and Generate ARM template'
+  displayName: 'Validate and Generate ARM template'
 
 # Publish the artifact to be used as a source for a release pipeline.
 
