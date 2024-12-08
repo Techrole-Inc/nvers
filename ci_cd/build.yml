@@ -31,7 +31,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
-    customCommand: "run build validate $(Build.Repository.LocalPath)/${{ parameters.WorkingDirectory }} /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers"
+    customCommand: "run build validate $(Build.Repository.LocalPath)/'${{ parameters.WorkingDirectory }}' /subscriptions/'${{ parameters.DEVSubscriptionID }}'/resourceGroups/'${{ parameters.DEVResourceGroupName }}'/providers/Microsoft.DataFactory/factories/nvers"
   displayName: 'Validate'
 
 
