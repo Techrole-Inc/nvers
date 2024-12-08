@@ -1,0 +1,26 @@
+name: ADF-CICD-Pipeline-$(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+- main 
+
+
+pool:
+  vmImage: "ubuntu-latest"
+
+stages:
+- stage: BuildDEVDataFactory
+  displayName: "Build DEV Data Factory"
+  
+  variables:
+  - group: dev
+
+  jobs:
+  - job: ValidateAndBuildDataFactoryTemplate
+    displayName: "Build DEV Data Factory"
+    steps:
+    - template: ci_cd/build.yml
+      parameters:
+        #DataFactoryName: "${{ variables.BuildDataFactoryName }}"
+        ResourceGroupName: "${{ variables.DEVResourceGroupName }}"
+        ADFArtifactName: "${{ variables.DEVSubscriptionID }}"
+        WorkingDirectory: "${{ variables.WorkingDirectory }}"
