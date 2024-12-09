@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "factoryName": {
-            "value": "nvers_uat"
+            "value": "nvers-uat"
         },
         "ls_nvers_adls_accountKey": {
             "value": "hey"
