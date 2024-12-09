@@ -49,7 +49,6 @@ steps:
     ScriptPath: "$(Pipeline.Workspace)/ADFArtifact/PrePostDeploymentScript.ps1"
     scriptArguments:
       -ArmTemplate "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
-      #-ArmTemplateParameters "${{ parameters.DataFactoryTemplateParametersFilePath }}"
       -ResourceGroupName "${{ parameters.ResourceGroupName }}"
       -DataFactoryName "${{ parameters.DataFactoryName }}"
       -predeployment $true
