@@ -15,8 +15,7 @@ parameters:
 - name: Environment
   type: string
  
-variables:
-  - group: uat
+
 
 
 steps:
@@ -61,9 +60,9 @@ steps:
     deploymentScope: "Resource Group"
     azureResourceManagerConnection: "terraform_auth"
     ${{ if eq(parameters.Environment, 'uat') }}:
-      subscriptionId: "$(UATSubscriptionID)"
+      subscriptionId: "${{ parameters.SubscriptionID }}"
     ${{ else }}:
-      subscriptionId: "$(PRODSubscriptionID)"
+      subscriptionId: "${{ parameters.SubscriptionID }}"
     action: "Create Or Update Resource Group"
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
     templateLocation: "Linked artifact"
