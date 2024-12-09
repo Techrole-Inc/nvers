@@ -35,16 +35,16 @@ stages:
   variables:
   - group: uat
 
-  jobs:
-  - deployment: ApprovalCheckDeployToUAT
-    displayName: "Approval Check To Deploy To UAT"
-    environment: UAT
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - powershell: |
-              Write-Host "Deploy To UAT has been fully approved. Starting the deployment to UAT."
+  # jobs:
+  # - deployment: ApprovalCheckDeployToUAT
+  #   displayName: "Approval Check To Deploy To UAT"
+  #   environment: UAT
+  #   strategy:
+  #     runOnce:
+  #       deploy:
+  #         steps:
+  #         - powershell: |
+  #             Write-Host "Deploy To UAT has been fully approved. Starting the deployment to UAT."
   
   
   - job: DeployDataFactory
