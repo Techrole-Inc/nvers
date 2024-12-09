@@ -41,13 +41,11 @@ steps:
     script: dir
     workingDirectory: "$(Pipeline.Workspace)/ArmTemplate"
 
-- script: |
-    echo "Listing the directory to confirm file existence:"
-    ls -R "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath | dirname }}"
-
-    echo "Printing the contents of the parameters file:"
-    cat "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
-  displayName: "Print Parameter File Contents"
+- task: CmdLine@2
+  displayName: "List Contents of Build.Repository.LocalPat"
+  inputs:
+    script: dir
+    workingDirectory: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
 
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: "Deploy ADF ARM Template"
