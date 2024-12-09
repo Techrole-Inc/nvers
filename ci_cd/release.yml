@@ -61,7 +61,7 @@ steps:
     location: "West US 2"
     templateLocation: "Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
-    csmParametersFile: "$(Build.Repository.LocalPath)/ci_cd/adf-uat-template-parameters.json"
+    csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
 
