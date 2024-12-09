@@ -62,8 +62,7 @@ steps:
     templateLocation: "Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
-    overrideParameters: |
-      -DataFactoryName "${{ parameters.DataFactoryName }}"
+    overrideParameters: -DataFactoryName "${{ parameters.DataFactoryName }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
 
