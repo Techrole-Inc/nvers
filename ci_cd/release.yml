@@ -39,20 +39,7 @@ steps:
     script: dir
     workingDirectory: "$(Pipeline.Workspace)/ADFArtifact"
 
-- task: AzurePowerShell@5
-  displayName: "Stop Current ADF Triggers"
-  inputs:
-    azureSubscription: "terraform_auth"
-    pwsh: true
-    azurePowerShellVersion: "LatestVersion"
-    ScriptType: "FilePath"
-    ScriptPath: "$(Pipeline.Workspace)/ADFArtifact/PrePostDeploymentScript.ps1"
-    scriptArguments:
-      -ArmTemplate "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
-      -ResourceGroupName "${{ parameters.ResourceGroupName }}"
-      -DataFactoryName "${{ parameters.DataFactoryName }}"
-      -predeployment $true
-      -deleteDeployment $false
+
 
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: "Deploy ADF ARM Template"
