@@ -42,7 +42,7 @@ steps:
 - task: AzurePowerShell@5
   displayName: "Stop Current ADF Triggers"
   inputs:
-    #azureSubscription: "${{ parameters.AzureResourceManagerConnection }}"
+    azureSubscription: "${{ parameters.AzureResourceManagerConnection }}"
     pwsh: true
     azurePowerShellVersion: "LatestVersion"
     ScriptType: "FilePath"
