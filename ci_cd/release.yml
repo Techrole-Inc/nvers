@@ -63,7 +63,7 @@ steps:
     csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     overrideParameters: |
-      -DataFactoryName "$(DataFactoryName)"
+      -DataFactoryName "${{ parameters.DataFactoryName }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
 
