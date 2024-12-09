@@ -46,6 +46,7 @@ steps:
   inputs:
     script: dir
     workingDirectory: "$(Build.Repository.LocalPath)/ci_cd"
+    echo "DataFactoryName is set to: $(DataFactoryName)"
 
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: "Deploy ADF ARM Template"
