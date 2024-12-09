@@ -55,7 +55,7 @@ steps:
     action: "Create Or Update Resource Group"
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
     location: "West US 2"
-    templateLocation: "Linked artifact"
+    templateLocation: "$(Pipeline.Workspace)/ArmTemplate" #"Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
