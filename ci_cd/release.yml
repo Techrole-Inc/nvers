@@ -57,16 +57,14 @@ steps:
   inputs:
     deploymentScope: "Resource Group"
     azureResourceManagerConnection: "${{ parameters.AzureResourceManagerConnection }}"
-    ${{ if eq(parameters.Environment, 'UAT') }}:
+    ${{ if eq(parameters.Environment, 'uat') }}:
       subscriptionId: "$(UATSubscriptionID)"
     ${{ else }}:
       subscriptionId: "$(PRODSubscriptionID)"
     action: "Create Or Update Resource Group"
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
-    location: "${{ parameters.ResourceGroupLocation }}"
     templateLocation: "Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
-    csmParametersFile: "${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
 
