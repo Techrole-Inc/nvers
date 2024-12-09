@@ -25,3 +25,41 @@ stages:
         WorkingDirectory: "$(WorkingDirectory)"
 
 
+
+
+- stage: DeployToUAT
+  dependsOn: BuildDEVDataFactory
+  condition: succeeded()
+  displayName: "Deploy To UAT"
+
+  variables:
+  - group: uat
+
+  jobs:
+  - deployment: ApprovalCheckDeployToUAT
+    displayName: "Approval Check To Deploy To UAT"
+    environment: UAT
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - powershell: |
+              Write-Host "Deploy To UAT has been fully approved. Starting the deployment to UAT."
+  
+  
+  - job: DeployDataFactory
+    displayName: "Deploy ADF ARM Template To Target ADF"
+    steps:
+    - template: ci_cd/release.yml
+      parameters:
+        #AzureResourceManagerConnection: "${{ variables.AzureResourceManagerConnection }}"
+        UATDataFactoryName: "$(UATDataFactoryName)"
+        #DataFactoryTemplateParametersFilePath: "$(DataFactoryTemplateParametersFilePath)"
+        DEVResourceGroupName: "$(DEVResourceGroupName)"
+        UATSubscriptionID: "$(UATSubscriptionID)"
+        WorkingDirectory: "$(WorkingDirectory)"
+        UATResourceGroupName: "$(UATResourceGroupName)"
+        ADFArtifactName: "$(ADFArtifactName)"
+        Environment: "$(Environment)"
+
+        
