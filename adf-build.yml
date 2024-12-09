@@ -53,7 +53,7 @@ stages:
     - template: ci_cd/release.yml
       parameters:
         AzureResourceManagerConnection: "$(AzureResourceManagerConnection_1)"
-        DataFactoryName: "nvers-uat" #"$(UATDataFactoryName)"
+        DataFactoryName: "$(UATDataFactoryName)"
         DataFactoryTemplateParametersFilePath: "$(DataFactoryTemplateParametersFilePath)"
         ResourceGroupName: "$(UATResourceGroupName)"
         SubscriptionID: "$(UATSubscriptionID)"
