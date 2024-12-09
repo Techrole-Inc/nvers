@@ -32,14 +32,14 @@ steps:
   displayName: "Download The ADF Artifact"
   inputs:
     buildType: "current"
-    artifactName: "${{ parameters.ADFArtifactName }}"
-    targetpath: "$(Pipeline.Workspace)/ADFArtifact"
+    artifactName: "ArmTemplate" #"${{ parameters.ADFArtifactName }}"
+    targetpath: "$(Pipeline.Workspace)/ArmTemplate"
 
 - task: CmdLine@2
   displayName: "List Contents of the Pipeline ADF Artifact Workspace"
   inputs:
     script: dir
-    workingDirectory: "$(Pipeline.Workspace)/ADFArtifact"
+    workingDirectory: "$(Pipeline.Workspace)/ArmTemplate"
 
 
 
