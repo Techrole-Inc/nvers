@@ -77,7 +77,7 @@ steps:
     ScriptArguments:
       -ArmTemplate "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
       -ResourceGroupName "${{ parameters.ResourceGroupName }}"
-      -DataFactoryName "nvers-uat" #"${{ parameters.DataFactoryName }}"
+      -DataFactoryName "nvers-uat"
       -predeployment $false
       -deleteDeployment $true
       
