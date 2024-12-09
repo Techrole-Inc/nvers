@@ -53,12 +53,12 @@ stages:
     - template: ci_cd/release.yml
       parameters:
         #AzureResourceManagerConnection: "${{ variables.AzureResourceManagerConnection }}"
-        UATDataFactoryName: "$(UATDataFactoryName)"
+        DataFactoryName: "$(UATDataFactoryName)"
         #DataFactoryTemplateParametersFilePath: "$(DataFactoryTemplateParametersFilePath)"
-        DEVResourceGroupName: "$(DEVResourceGroupName)"
-        UATSubscriptionID: "$(UATSubscriptionID)"
+        ResourceGroupName: "$(DEVResourceGroupName)"
+        SubscriptionID: "$(UATSubscriptionID)"
         WorkingDirectory: "$(WorkingDirectory)"
-        UATResourceGroupName: "$(UATResourceGroupName)"
+        ResourceGroupName: "$(UATResourceGroupName)"
         ADFArtifactName: "$(ADFArtifactName)"
         Environment: "$(Environment)"
 
