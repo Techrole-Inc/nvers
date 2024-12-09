@@ -41,7 +41,13 @@ steps:
     script: dir
     workingDirectory: "$(Pipeline.Workspace)/ArmTemplate"
 
+- script: |
+    echo "Listing the directory to confirm file existence:"
+    ls -R "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath | dirname }}"
 
+    echo "Printing the contents of the parameters file:"
+    cat "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
+  displayName: "Print Parameter File Contents"
 
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: "Deploy ADF ARM Template"
@@ -60,6 +66,7 @@ steps:
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
+
 
 - task: AzurePowerShell@5
   displayName: "Cleanup Resource And Start ADF Triggers"
