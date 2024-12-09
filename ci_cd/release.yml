@@ -43,8 +43,7 @@ steps:
 
 - task: CmdLine@2
   displayName: "List Contents of Build.Repository.LocalPat"
-  inputs:
-    script: echo "DataFactoryName is set to: $(DataFactoryName)"
+  script: echo "DataFactoryName is set to: $(DataFactoryName)"
     
 
 - task: AzureResourceManagerTemplateDeployment@3
