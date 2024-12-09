@@ -52,6 +52,7 @@ steps:
       subscriptionId: "${{ parameters.SubscriptionID }}"
     action: "Create Or Update Resource Group"
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
+    location: "West US 2"
     templateLocation: "Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
     deploymentOutputs: "armADFOutputs"
