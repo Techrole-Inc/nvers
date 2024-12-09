@@ -43,7 +43,14 @@ steps:
 
 - task: CmdLine@2
   displayName: "List Contents of Build.Repository.LocalPat"
-  script: echo "DataFactoryName is set to: $(DataFactoryName)"
+  inputs:
+    script: dir
+    workingDirectory: "$(Build.Repository.LocalPath)/ci_cd"
+
+- script: |
+    echo "DataFactoryName is set to: $(DataFactoryName)"
+    ls -R "$(Pipeline.Workspace)/ArmTemplate"
+  displayName: "List Contents of ArmTemplate Directory"
     
 
 - task: AzureResourceManagerTemplateDeployment@3
