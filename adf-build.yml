@@ -58,7 +58,6 @@ stages:
         ResourceGroupName: "$(DEVResourceGroupName)"
         SubscriptionID: "$(UATSubscriptionID)"
         WorkingDirectory: "$(WorkingDirectory)"
-        ResourceGroupName: "$(UATResourceGroupName)"
         ADFArtifactName: "$(ADFArtifactName)"
         Environment: "$(Environment)"
 
