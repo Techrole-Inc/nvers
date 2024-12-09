@@ -45,7 +45,6 @@ steps:
   displayName: "List Contents of Build.Repository.LocalPat"
   inputs:
     script: echo "DataFactoryName is set to: $(DataFactoryName)"
-    workingDirectory: "$(Build.Repository.LocalPath)/ci_cd"
     
 
 - task: AzureResourceManagerTemplateDeployment@3
