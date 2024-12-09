@@ -2,8 +2,8 @@
 parameters:
 - name: ADFArtifactName
   type: string
-#- name: AzureResourceManagerConnection
-#  type: string
+- name: AzureResourceManagerConnection
+  type: string
 - name: DataFactoryName
   type: string
 - name: ResourceGroupName
@@ -59,7 +59,7 @@ steps:
   displayName: "Deploy ADF ARM Template"
   inputs:
     deploymentScope: "Resource Group"
-    #azureResourceManagerConnection: "${{ parameters.AzureResourceManagerConnection }}"
+    azureResourceManagerConnection: "${{ parameters.AzureResourceManagerConnection }}"
     ${{ if eq(parameters.Environment, 'UAT') }}:
       subscriptionId: "$(UATSubscriptionID)"
     ${{ else }}:
