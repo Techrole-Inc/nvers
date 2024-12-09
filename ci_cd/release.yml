@@ -40,7 +40,7 @@ steps:
 - task: AzurePowerShell@5
   displayName: "Stop Current ADF Triggers"
   inputs:
-    azureSubscription: "${{ parameters.AzureResourceManagerConnection }}"
+    azureSubscription: "terraform_auth"
     pwsh: true
     azurePowerShellVersion: "LatestVersion"
     ScriptType: "FilePath"
@@ -56,7 +56,7 @@ steps:
   displayName: "Deploy ADF ARM Template"
   inputs:
     deploymentScope: "Resource Group"
-    azureResourceManagerConnection: "${{ parameters.AzureResourceManagerConnection }}"
+    azureResourceManagerConnection: "terraform_auth"
     ${{ if eq(parameters.Environment, 'uat') }}:
       subscriptionId: "$(UATSubscriptionID)"
     ${{ else }}:
@@ -71,7 +71,7 @@ steps:
 - task: AzurePowerShell@5
   displayName: "Cleanup Resource And Start ADF Triggers"
   inputs:
-    azureSubscription: "${{ parameters.azureResourceManagerConnection }}"
+    azureSubscription: "terraform_auth"
     pwsh: true
     azurePowerShellVersion: "LatestVersion"
     ScriptType: "FilePath"

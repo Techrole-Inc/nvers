@@ -52,7 +52,7 @@ stages:
     steps:
     - template: ci_cd/release.yml
       parameters:
-        AzureResourceManagerConnection: "$(AzureResourceManagerConnection)"
+        AzureResourceManagerConnection: "$(AzureResourceManagerConnection_1)"
         DataFactoryName: "$(UATDataFactoryName)"
         #DataFactoryTemplateParametersFilePath: "$(DataFactoryTemplateParametersFilePath)"
         ResourceGroupName: "$(DEVResourceGroupName)"
