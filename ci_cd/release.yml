@@ -14,6 +14,8 @@ parameters:
   type: string
 - name: Environment
   type: string
+- name: DataFactoryTemplateParametersFilePath
+  type: string
  
 
 
@@ -55,6 +57,7 @@ steps:
     location: "West US 2"
     templateLocation: "Linked artifact"
     csmFile: "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
+    csmParametersFile: "${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
 
