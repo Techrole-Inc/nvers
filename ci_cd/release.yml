@@ -14,8 +14,6 @@ parameters:
   type: string
 - name: Environment
   type: string
-  values:
-  - UAT
  
 
 steps:
