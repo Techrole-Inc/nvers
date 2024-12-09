@@ -1,11 +1,9 @@
 
-
 parameters:
 - name: ADFArtifactName
   type: string
 #- name: AzureResourceManagerConnection
 #  type: string
-parameters:
 - name: DataFactoryName
   type: string
 - name: ResourceGroupName
