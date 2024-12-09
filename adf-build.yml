@@ -55,7 +55,7 @@ stages:
         AzureResourceManagerConnection: "$(AzureResourceManagerConnection_1)"
         DataFactoryName: "$(UATDataFactoryName)"
         #DataFactoryTemplateParametersFilePath: "$(DataFactoryTemplateParametersFilePath)"
-        ResourceGroupName: "$(DEVResourceGroupName)"
+        ResourceGroupName: "$(UATResourceGroupName)"
         SubscriptionID: "$(UATSubscriptionID)"
         WorkingDirectory: "$(WorkingDirectory)"
         ADFArtifactName: "$(ADFArtifactName)"
