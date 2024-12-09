@@ -56,7 +56,7 @@ steps:
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
     location: "West US 2"
     templateLocation: "Linked artifact"
-    csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
+    csmFile: "$(Pipeline.Workspace)/ARMTemplateForFactory.json"
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
