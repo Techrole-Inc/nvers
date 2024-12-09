@@ -56,7 +56,7 @@ steps:
     resourceGroupName: "${{ parameters.ResourceGroupName }}"
     location: "West US 2"
     templateLocation: "Linked artifact"
-    csmFile: "$(Build.Repository.LocalPath)/ArmTemplate/ARMTemplateForFactory.json"
+    csmFile: "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
     csmParametersFile: "$(Build.Repository.LocalPath)/${{ parameters.DataFactoryTemplateParametersFilePath }}"
     deploymentOutputs: "armADFOutputs"
     deploymentMode: "Incremental"
@@ -68,9 +68,9 @@ steps:
     pwsh: true
     azurePowerShellVersion: "LatestVersion"
     ScriptType: "FilePath"
-    ScriptPath: "$(Pipeline.Workspace)/ADFArtifact/PrePostDeploymentScript.ps1"
+    ScriptPath: "$(Pipeline.Workspace)/ArmTemplate/PrePostDeploymentScript.ps1"
     ScriptArguments:
-      -ArmTemplate "$(Pipeline.Workspace)/ADFArtifact/ARMTemplateForFactory.json"
+      -ArmTemplate "$(Pipeline.Workspace)/ArmTemplate/ARMTemplateForFactory.json"
       -ResourceGroupName "${{ parameters.ResourceGroupName }}"
       -DataFactoryName "${{ parameters.DataFactoryName }}"
       -predeployment $false
