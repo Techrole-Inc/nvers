@@ -45,7 +45,7 @@ steps:
   displayName: "List Contents of Build.Repository.LocalPat"
   inputs:
     script: dir
-    workingDirectory: "$(Build.Repository.LocalPath)"
+    workingDirectory: "$(Build.Repository.LocalPath)/ci_cd"
 
 - task: AzureResourceManagerTemplateDeployment@3
   displayName: "Deploy ADF ARM Template"
