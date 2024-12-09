@@ -10,7 +10,7 @@ parameters:
   type: string
 - name: SubscriptionID
   type: string
-- name: WorkingDirectory # Used to grab the ADF template parameter files and any other files needed to build the ADF
+- name: WorkingDirectory # Used to grab the ADF template parameter files and any other files needed to build the ADFF
   type: string
 - name: Environment
   type: string
